@@ -6,8 +6,8 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody playerRb;
     public float horizontalInput;
-    public float movementSpeed = 10.0f;
-    public float jumpForce = 5.0f;
+    public float movementSpeed = 8.0f;
+    public float jumpForce = 7.0f;
     public float xBoundary = 10.6f;
     public bool isOnGround = true;
     // Start is called before the first frame update
@@ -21,7 +21,8 @@ public class PlayerController : MonoBehaviour
     {
         // code that recieves horizontal inputs and moves the player accordingly
         horizontalInput = Input.GetAxis("Horizontal");
-        transform.Translate(Vector3.right * horizontalInput * Time.deltaTime * movementSpeed);
+        // Vector 3 forward is used here because I had to rotate the player model
+        transform.Translate(Vector3.forward * horizontalInput * Time.deltaTime * movementSpeed);
 
         // if statement to make the player jump when input is recieved
         if (Input.GetKeyDown(KeyCode.Space) && isOnGround)
