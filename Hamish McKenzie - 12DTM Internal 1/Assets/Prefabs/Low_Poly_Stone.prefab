@@ -75,9 +75,10 @@ GameObject:
   - component: {fileID: 3032138275850780210}
   - component: {fileID: 7088411871785864765}
   - component: {fileID: 7088411871785864738}
+  - component: {fileID: 2487311749459905687}
   m_Layer: 0
   m_Name: Low_Poly_Stone
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -127,6 +128,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.9145997, y: 1, z: 2.0199368}
   m_Center: {x: 0.21134338, y: 0, z: 0.2597698}
+--- !u!114 &2487311749459905687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3797135463016085939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1eed2a3c0980fd41acb614b3b7c6ada, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6377545617196345658
 GameObject:
   m_ObjectHideFlags: 0
