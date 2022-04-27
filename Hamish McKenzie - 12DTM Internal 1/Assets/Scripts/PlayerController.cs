@@ -11,10 +11,12 @@ public class PlayerController : MonoBehaviour
     public float xBoundary = 10.6f;
     public bool isOnGround = true;
     public bool gameOver;
+    private GameManager gameManager;
     // Start is called before the first frame update
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -44,10 +46,19 @@ public class PlayerController : MonoBehaviour
         {
             isOnGround = true;
         } 
-        else if(collision.gameObject.Comparetag("Obstacle"))
+        else if(collision.gameObject.CompareTag("Obstacle"))
         {
             Debug.Log("Game Over");
             gameOver = true;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Collectable"))
+        {
+            Destroy(other.gameObject);
+            gameManager.UpdateScore(5);
         }
     }
 }
