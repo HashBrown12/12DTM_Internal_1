@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     public float horizontalInput;
     public float movementSpeed = 8.0f;
     public float jumpForce = 7.0f;
-    public float xBoundary = 10.6f;
+    public float xBoundary = 25.0f;
     public bool isOnGround = true;
     public bool gameOver;
     private GameManager gameManager;
@@ -50,9 +50,11 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Game Over");
             gameOver = true;
+            gameManager.GameOver();
         }
     }
-
+    // this function destroys the bananas when the player collides with them
+    // and adds 5 to the score count.
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Collectable"))
