@@ -5,6 +5,7 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    // variables
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI gameOverText;
     private int score;

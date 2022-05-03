@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    // variables
     private Rigidbody playerRb;
     public float horizontalInput;
     public float movementSpeed = 8.0f;
@@ -37,6 +38,12 @@ public class PlayerController : MonoBehaviour
         if (transform.position.x < -xBoundary)
         {
             transform.position = new Vector3(-xBoundary, transform.position.y, transform.position.z);
+        }
+        // if statement to disable the script if the gameOver = true
+        // so that the player can't continue the game
+        if(gameOver == true)
+        {
+            enabled = false;
         }
     }
 
