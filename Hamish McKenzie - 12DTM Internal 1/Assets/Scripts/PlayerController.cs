@@ -9,7 +9,9 @@ public class PlayerController : MonoBehaviour
     public float horizontalInput;
     public float movementSpeed = 8.0f;
     public float jumpForce = 7.0f;
-    public float xBoundary = 25.0f;
+    public float xBoundaryLeft = 25.0f;
+    public float xBoundaryRight = 80.0f;
+    public float yBoundary = 7.0f;
     public bool isOnGround = true;
     public bool gameOver;
     private GameManager gameManager;
@@ -35,9 +37,22 @@ public class PlayerController : MonoBehaviour
             isOnGround = false;
         }
         // if statement to set a boundary on the left
-        if (transform.position.x < -xBoundary)
+        if (transform.position.x < -xBoundaryLeft)
         {
-            transform.position = new Vector3(-xBoundary, transform.position.y, transform.position.z);
+            transform.position = new Vector3(-xBoundaryLeft, transform.position.y, transform.position.z);
+        }
+        // if statement to set a boundary on the right
+        if(transform.position.x > xBoundaryRight)
+        {
+            transform.position = new Vector3(xBoundaryRight, transform.position.y, transform.position.z);
+        }
+        // if statement to display the Game Over message when the player
+        // falls down far enough
+        if(transform.position.y < -yBoundary)
+        {
+            Debug.Log("Game Over");
+            gameOver = true;
+            gameManager.GameOver();
         }
         // if statement to disable the script if the gameOver = true
         // so that the player can't continue the game
@@ -58,6 +73,11 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Game Over");
             gameOver = true;
             gameManager.GameOver();
+        }
+        else if(collision.gameObject.CompareTag("EndGoal"))
+        {
+            Debug.Log("You Win!");
+            gameManager.YouWin();
         }
     }
     // this function destroys the bananas when the player collides with them

@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     // variables
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI gameOverText;
+    public TextMeshProUGUI youWinText;
     private int score;
     // Start is called before the first frame update
     void Start()
@@ -31,5 +32,10 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         gameOverText.gameObject.SetActive(true);
+    }
+
+    public void YouWin()
+    {
+        youWinText.gameObject.SetActive(true);
     }
 }
