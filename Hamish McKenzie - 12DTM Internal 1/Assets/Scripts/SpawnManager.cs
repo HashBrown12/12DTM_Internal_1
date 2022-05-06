@@ -12,6 +12,8 @@ public class SpawnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // a statement which repeatedly spawns the obstacle
+        // at a delegated interval
         InvokeRepeating("SpawnObstacle", startDelay, repeatRate);
     }
 
@@ -20,7 +22,8 @@ public class SpawnManager : MonoBehaviour
     {
         
     }
-
+    // a function which spawns the obstacles in their 
+    // delegated spawn position
     void SpawnObstacle()
     {
         Instantiate(obstaclePrefab, spawnPos, obstaclePrefab.transform.rotation);

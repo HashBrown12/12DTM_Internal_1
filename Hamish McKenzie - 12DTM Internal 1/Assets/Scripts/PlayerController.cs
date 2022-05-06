@@ -14,11 +14,15 @@ public class PlayerController : MonoBehaviour
     public float yBoundary = 7.0f;
     public bool isOnGround = true;
     public bool gameOver;
+    public bool youWin;
     private GameManager gameManager;
     // Start is called before the first frame update
     void Start()
     {
+        // Getting the component for the player rigidbody
         playerRb = GetComponent<Rigidbody>();
+        // importing the GameManager script so that this script
+        // can communicate with it and make texts appear
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
@@ -60,8 +64,15 @@ public class PlayerController : MonoBehaviour
         {
             enabled = false;
         }
+        // if statement to disable the script if the youWin = true
+        // so that the player can't continue to play.
+        if(youWin == true)
+        {
+            enabled = false;
+        }
     }
-
+    // a function which deals with all of the collisions in the
+    // game and enables texts e.g winning text and losing text
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.CompareTag("Ground"))
@@ -78,6 +89,8 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("You Win!");
             gameManager.YouWin();
+            youWin = true;
+
         }
     }
     // this function destroys the bananas when the player collides with them

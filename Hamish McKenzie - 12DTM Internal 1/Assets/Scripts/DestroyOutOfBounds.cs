@@ -15,6 +15,8 @@ public class DestroyOutOfBounds : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // an if statement which destroys the obstacles
+        // once they reach a certain y position
         if(transform.position.y < -yBoundary)
         {
             Destroy(gameObject);
